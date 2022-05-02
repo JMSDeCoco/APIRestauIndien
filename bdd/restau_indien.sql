@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 02 mai 2022 à 13:21
+-- Généré le : lun. 02 mai 2022 à 14:11
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -35,6 +35,32 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `mail` varchar(50) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_client`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandes`
+--
+
+DROP TABLE IF EXISTS `commandes`;
+CREATE TABLE IF NOT EXISTS `commandes` (
+  `id_commande` int(11) NOT NULL AUTO_INCREMENT,
+  `id_client` int(11) NOT NULL,
+  `status` enum('En attente','En préparation','Prête','En livraison') NOT NULL,
+  PRIMARY KEY (`id_commande`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `liste_commande`
+--
+
+DROP TABLE IF EXISTS `liste_commande`;
+CREATE TABLE IF NOT EXISTS `liste_commande` (
+  `id_commande` int(11) NOT NULL,
+  `id_plat` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
