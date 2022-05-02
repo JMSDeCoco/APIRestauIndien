@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 02 mai 2022 à 14:11
+-- Généré le : lun. 02 mai 2022 à 14:54
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `nom` varchar(20) NOT NULL,
   `tel` int(11) NOT NULL,
   `mail` varchar(50) NOT NULL,
+  `pwd` text NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_client`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -74,8 +75,9 @@ CREATE TABLE IF NOT EXISTS `plats` (
   `id_plats` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(20) NOT NULL,
   `prix` double NOT NULL,
-  `type` int(11) NOT NULL,
+  `type` enum('Entree','Plat','Dessert','Boisson') NOT NULL,
   `quantite` int(11) NOT NULL,
+  `photo` text NOT NULL,
   PRIMARY KEY (`id_plats`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
