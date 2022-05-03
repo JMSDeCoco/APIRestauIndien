@@ -3,7 +3,7 @@ namespace App\Entity;
 
 use JsonSerializable;
 
-class Client implements JsonSerializable {
+class Clients implements JsonSerializable {
 
     private int $id_client;
 
