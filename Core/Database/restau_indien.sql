@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 02 mai 2022 à 14:54
+-- Généré le : mar. 03 mai 2022 à 12:08
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `commandes` (
 DROP TABLE IF EXISTS `liste_commande`;
 CREATE TABLE IF NOT EXISTS `liste_commande` (
   `id_commande` int(11) NOT NULL,
-  `id_plat` int(11) NOT NULL
+  `id_plats` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -74,10 +74,9 @@ DROP TABLE IF EXISTS `plats`;
 CREATE TABLE IF NOT EXISTS `plats` (
   `id_plats` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(20) NOT NULL,
-  `prix` double NOT NULL,
+  `prix` float NOT NULL,
   `type` enum('Entree','Plat','Dessert','Boisson') NOT NULL,
-  `quantite` int(11) NOT NULL,
-  `photo` text NOT NULL,
+  `qty` int(11) NOT NULL,
   PRIMARY KEY (`id_plats`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
