@@ -6,7 +6,7 @@ use Core\Model\DefaultModel;
 /**
  * @method Clients[] findAll()
  */
-class PlatsModel extends DefaultModel {
+class ClientsModel extends DefaultModel {
 
     protected string $table = "clients";
     protected string $entity = "Clients";

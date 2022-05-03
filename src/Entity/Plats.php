@@ -5,9 +5,9 @@ use JsonSerializable;
 
 class Plats implements JsonSerializable {
 
-    private int $id;
+    private int $id_plats;
 
-    private string $nom;
+    private String $nom;
 
     private float $prix;
 
@@ -16,21 +16,21 @@ class Plats implements JsonSerializable {
     private int $qty;
 
     /**
-     * Get the value of id
+     * Get the value of id_plats
      *
      * @return int
      */
-    public function getId(): int
+    public function getId_plats(): int
     {
-        return $this->id;
+        return $this->id_plats;
     }
 
     /**
      * Get the value of nom
      *
-     * @return string
+     * @return String
      */
-    public function getNom(): string
+    public function getNom(): String
     {
         return $this->nom;
     }
@@ -68,11 +68,11 @@ class Plats implements JsonSerializable {
     /**
      * Set the value of nom
      *
-     * @param string $nom
+     * @param String $nom
      *
      * @return self
      */
-    public function setNom(string $nom): self
+    public function setNom(String $nom): self
     {
         $this->nom = $nom;
 
@@ -96,11 +96,11 @@ class Plats implements JsonSerializable {
      /**
      * Set the value of type
      *
-     * @param string $type
+     * @param String $type
      *
      * @return self
      */
-    public function setType(string $type): self
+    public function setType(String $type): self
     {
         $this->type = $type;
 
@@ -124,7 +124,7 @@ class Plats implements JsonSerializable {
     public function jsonSerialize(): mixed
     {
         return [
-            "id" => $this->id,
+            "id_plats" => $this->id_plats,
             "nom" => $this->nom,
             "prix" => $this->prix,
             "type" => $this->type,
