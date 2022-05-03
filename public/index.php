@@ -1,8 +1,10 @@
 <?php
 
-use App\Controller\ClientsController;
+use Core\Router\Router;
 
-define("ROOT", dirname(__DIR__));
-require ROOT . "/vendor/autoload.php";
+define('ROOT', dirname(__DIR__));
+require ROOT ."/vendor/autoload.php";
 
-(new ClientsController)->index();
+// Chargement du routeur
+require ROOT ."/Core/Router/Router.php";
+Router::router(); 
