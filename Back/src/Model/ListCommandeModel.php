@@ -20,6 +20,4 @@ class ListCommandeModel extends DefaultModel {
         }
         return false;
     }
-
-    //public function deletePlats()
 }
