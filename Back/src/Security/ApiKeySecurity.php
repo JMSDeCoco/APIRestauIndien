@@ -10,6 +10,8 @@ class ApiKeySecurity {
     {
         if(isset($_GET['apikey']) && !empty($_GET['apikey'])){
             $clientModel = new ClientsModel();
+            var_dump($_GET);
+
             if ($clientModel->findByApikey($_GET['apikey'])) {
                 return true;
             } else {

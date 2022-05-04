@@ -5,6 +5,7 @@ use App\Security\ApiKeySecurity;
 
 define('ROOT', dirname(__DIR__));
 require ROOT ."/vendor/autoload.php";
+require ROOT ."/Core/Router/Router.php";
 
 // header("Access-Control-Allow-Origin: http://127.0.0.1:5501");
 // Indique quels clients peuvent se connecter à l'api
@@ -18,7 +19,6 @@ header('Access-Control-Max-Age:1728000');
 
 // Chargement du routeur
 if (ApiKeySecurity::verifyApiKey()) {
-    require ROOT ."/Core/Routeur/Routeur.php";
     Router::router();
 }
 
