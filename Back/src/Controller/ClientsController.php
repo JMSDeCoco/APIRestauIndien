@@ -34,7 +34,7 @@ class ClientsController extends DefaultController {
     }
     public function signup(): void
     {
-        if(isset($_POST['nom'],$_POST['tel'],$_POST['mail'],$_POST['password'])){
+        if(isset($_POST['nom'],$_POST['tel'],$_POST['mail'],$_POST['pwd'])){
            
             $user = $_POST;
             $user['password'] = password_hash($user['password'],PASSWORD_DEFAULT);
@@ -42,6 +42,21 @@ class ClientsController extends DefaultController {
             $lastId = $this->model->saveUser($user);
 
             $this->jsonResponse($this->model->find($lastId));
+        }
+    }
+
+    public function login(array $userData): void
+    {
+        $user = $this->model->getUserByEmail($userData['mail']);
+        if ($user){
+            if(password_verify($userData['pwd'],$user->getPassword())){
+
+                $this->jsonResponse((new JwTokenSecurity)->generateToken($user->jsonSerialize()));
+            }else{
+                $this->jsonResponse("Mot de pass incorrect",400);
+            }
+        }else{
+            $this->jsonResponse("Cet utilisateur n'est pas inscrit, veuillez vous inscrire", 400);
         }
     }
 }
