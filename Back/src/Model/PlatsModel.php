@@ -11,7 +11,7 @@ class PlatsModel extends DefaultModel {
     protected string $table = "plats";
     protected string $entity = "Plats";
 
-    public function addCommande($plat): int|false
+    public function addPlats($plat): int|false
     {
         $stmt = "INSERT INTO $this->table(nom, prix, type, qty) VALUES (:nom, :prix, :type, :qty)";
         $prepare = $this->pdo->prepare($stmt);
@@ -21,7 +21,7 @@ class PlatsModel extends DefaultModel {
         return false;
     }
 
-    public function updateCommande(int $id_commande, array $commande): bool
+    public function updatePlats(int $id_commande, array $commande): bool
     {
         $stmt = "
             UPDATE $this->table SET
