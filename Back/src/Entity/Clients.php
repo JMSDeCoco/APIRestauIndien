@@ -138,17 +138,15 @@ class Clients implements JsonSerializable {
     public function jsonSerialize(): mixed
     {
 
+       
         return [
-            "apikey" => $this->apikey
+            "id_client" => $this->id_client,
+            "nom" => $this->nom,
+            "tel" => $this->tel,
+            "mail" => $this->mail,
+            "pwd" => $this->pwd,
+            "admin" => $this->admin
         ];
-        // return [
-        //     "id_client" => $this->id_client,
-        //     "nom" => $this->nom,
-        //     "tel" => $this->tel,
-        //     "mail" => $this->mail,
-        //     "pwd" => $this->pwd,
-        //     "admin" => $this->admin
-        // ];
     }
     public function getApikey(): string
     {
