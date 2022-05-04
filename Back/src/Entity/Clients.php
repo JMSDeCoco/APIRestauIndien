@@ -17,6 +17,8 @@ class Clients implements JsonSerializable {
 
     private bool $admin;
 
+    private string $apikey;
+
     /**
      * Get the value of id_commande
      *
@@ -135,13 +137,35 @@ class Clients implements JsonSerializable {
 
     public function jsonSerialize(): mixed
     {
+
         return [
-            "id_client" => $this->id_client,
-            "nom" => $this->nom,
-            "tel" => $this->tel,
-            "mail" => $this->mail,
-            "pwd" => $this->pwd,
-            "admin" => $this->admin
+            "apikey" => $this->apikey
         ];
+        // return [
+        //     "id_client" => $this->id_client,
+        //     "nom" => $this->nom,
+        //     "tel" => $this->tel,
+        //     "mail" => $this->mail,
+        //     "pwd" => $this->pwd,
+        //     "admin" => $this->admin
+        // ];
+    }
+    public function getApikey(): string
+    {
+        return $this->apikey;
+    }
+
+    /**
+     * Set the value of apikey
+     *
+     * @param string $apikey
+     *
+     * @return self
+     */
+    public function setApikey(string $apikey): self
+    {
+        $this->apikey = $apikey;
+
+        return $this;
     }
 }
