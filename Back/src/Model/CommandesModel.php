@@ -13,7 +13,7 @@ class CommandesModel extends DefaultModel {
 
     public function addCommande($commande): int|false
     {
-        $stmt = "INSERT INTO $this->table(id_commande, id_client,status) VALUES (:id_commande, :id_client, :status)";
+        $stmt = "INSERT INTO $this->table(id_client,status) VALUES (:id_client, :status)";
         $prepare = $this->pdo->prepare($stmt);
         if($prepare->execute($commande)){
             return $this->pdo->lastInsertId($this->table);
