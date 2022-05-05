@@ -17,7 +17,6 @@ class Clients implements JsonSerializable {
 
     private bool $admin;
 
-    private string $apikey;
 
     /**
      * Get the value of id_commande
@@ -148,22 +147,31 @@ class Clients implements JsonSerializable {
             "admin" => $this->admin
         ];
     }
-    public function getApikey(): string
+
+
+
+    public function getClientByEmail(string $email): Clients|false
     {
-        return $this->apikey;
+        $stmt = "SELECT * FROM $this->table WHERE email = '$email'";
+        $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\\$this->entity");
+
+        return $query->fetch();
     }
 
     /**
-     * Set the value of apikey
+     * Enregistre un user en BDD
      *
-     * @param string $apikey
-     *
-     * @return self
+     * @param array $clients
+     * @return integer|false
      */
-    public function setApikey(string $apikey): self
+    public function saveClient (array $clients): int|false
     {
-        $this->apikey = $apikey;
+        $stmt = "INSERT INTO $this->table (nom, prenom, email, phone, password, roles) VALUES (:nom, :prenom, :email, :phone, :password, :roles)";
+        $prepare = $this->pdo->prepare($stmt);
 
-        return $this;
+        if ($prepare->execute($clients)) {
+            return $this->pdo->lastInsertId('clients');
+        }
+        return false;
     }
 }
