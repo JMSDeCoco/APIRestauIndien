@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `mail` varchar(50) NOT NULL,
   `pwd` text NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
+  `apikey` text NOT NULL,
+
   PRIMARY KEY (`id_client`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

@@ -17,6 +17,7 @@ class Clients implements JsonSerializable {
 
     private bool $admin;
 
+
     /**
      * Get the value of id_commande
      *
@@ -135,6 +136,8 @@ class Clients implements JsonSerializable {
 
     public function jsonSerialize(): mixed
     {
+
+       
         return [
             "id_client" => $this->id_client,
             "nom" => $this->nom,
@@ -143,5 +146,32 @@ class Clients implements JsonSerializable {
             "pwd" => $this->pwd,
             "admin" => $this->admin
         ];
+    }
+
+
+
+    public function getClientByEmail(string $email): Clients|false
+    {
+        $stmt = "SELECT * FROM $this->table WHERE email = '$email'";
+        $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\\$this->entity");
+
+        return $query->fetch();
+    }
+
+    /**
+     * Enregistre un user en BDD
+     *
+     * @param array $clients
+     * @return integer|false
+     */
+    public function saveClient (array $clients): int|false
+    {
+        $stmt = "INSERT INTO $this->table (nom, prenom, email, phone, password, roles) VALUES (:nom, :prenom, :email, :phone, :password, :roles)";
+        $prepare = $this->pdo->prepare($stmt);
+
+        if ($prepare->execute($clients)) {
+            return $this->pdo->lastInsertId('clients');
+        }
+        return false;
     }
 }

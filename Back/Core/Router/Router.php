@@ -5,16 +5,17 @@ class Router {
 
 public static function router ()
 {
+    echo explode("/",$_SERVER["PATH_INFO"])[3];
     if (isset($_SERVER["PATH_INFO"])) {
         $path = explode("/",$_SERVER["PATH_INFO"]);
     
-        if (isset($path[1])) {
-            $controllerName = "App\Controller\\". ucfirst($path[1]) . "Controller";
+        if (isset($path[3])) {
+            $controllerName = "App\Controller\\". ucfirst($path[3]) . "Controller";
             $controller = new $controllerName();
     
             $id = null;
-            if (isset($path[2]) && is_numeric($path[2])) {
-                $id = $path[2];
+            if (isset($path[4]) && is_numeric($path[4])) {
+                $id = $path[4];
             }
             switch ($_SERVER['REQUEST_METHOD']){
                 case 'GET': 
@@ -24,13 +25,22 @@ public static function router ()
                             $controller->index();
                         }
                     break;
-                case 'POST': 
+                    case 'POST': 
                         if (!empty($_POST)) {
-                            $controller->save($_POST);
+                            if (isset($path[4]) && is_string($path[4])) {
+                                $method = $path[4];
+                                if (method_exists($controller, $method)) {
+                                    $controller->$method($_POST);
+                                } else {
+                                    throw new \Exception("La méthode $method n'existe pas", 404);
+                                }
+                            } else {
+                                $controller->saveClient($_POST);
+                            }
                         } else {
                             throw new \Exception("Données manquantes pour l'ajout en BDD", 400);
                         }
-                    break;
+                        break;
                 case 'PUT': 
                     parse_str(file_get_contents("php://input"), $_PUT);
                     if ($id && !empty($_PUT)) {
