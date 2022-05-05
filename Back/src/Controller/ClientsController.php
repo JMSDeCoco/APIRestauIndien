@@ -26,12 +26,11 @@ class ClientsController extends DefaultController {
 
     public function signup (array $client): void
     {
-        if (isset($client["nom"], $client["prenom"], $client["email"], $client["phone"], $client["password"])) {
+        if (isset($client["nom"], $client["mail"], $client["tel"], $client["pwd"])) {
 
-            $client['password'] = password_hash($client['password'], PASSWORD_DEFAULT);
-            $client['roles'] = json_encode([]);
-
-            $lastId = $this->model->save($client);
+            $client['pwd'] = password_hash($client['pwd'], PASSWORD_DEFAULT);
+            // $client['roles'] = json_encode([]);
+            $lastId = $this->model->saveClient($client);
 
             $this->jsonResponse($this->model->find($lastId));
         }
@@ -40,10 +39,10 @@ class ClientsController extends DefaultController {
     public function login (array $clientData): void
     {
         // TODO: Vérifier que $clientData contient un email et un password sinon on retourne une erreur
-        $client = $this->model->getclientByEmail($clientData['email']);
+        $client = $this->model->getClientByEmail($clientData['mail']);
 
         if ($client) {
-            if (password_verify($clientData['password'], $client->getPassword())) {
+            if (password_verify($clientData['pwd'], $client->getPwd())) {
 
                 $this->jsonResponse((new JwTokenSecurity)->generateToken($client->jsonSerialize()));
 
@@ -55,17 +54,5 @@ class ClientsController extends DefaultController {
         }
     }
 
-    public function save (array $client): void
-    {
-        // Génère l'apikey
-        $apikey = md5(uniqid());
-        $client['apikey'] = $apikey;
-        // Stocke le client
-        $lastId = $this->model->saveClient($client);
-        // Retourne l'apikey
-        $this->jsonResponse($this->model->find($lastId));
-    }
-    
 
-   
 }

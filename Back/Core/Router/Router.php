@@ -5,6 +5,7 @@ class Router {
 
 public static function router ()
 {
+    echo explode("/",$_SERVER["PATH_INFO"])[3];
     if (isset($_SERVER["PATH_INFO"])) {
         $path = explode("/",$_SERVER["PATH_INFO"]);
     
@@ -26,15 +27,15 @@ public static function router ()
                     break;
                     case 'POST': 
                         if (!empty($_POST)) {
-                            if (isset($path[2]) && is_string($path[2])) {
-                                $method = $path[2];
+                            if (isset($path[4]) && is_string($path[4])) {
+                                $method = $path[4];
                                 if (method_exists($controller, $method)) {
                                     $controller->$method($_POST);
                                 } else {
                                     throw new \Exception("La méthode $method n'existe pas", 404);
                                 }
                             } else {
-                                $controller->save($_POST);
+                                $controller->saveClient($_POST);
                             }
                         } else {
                             throw new \Exception("Données manquantes pour l'ajout en BDD", 400);

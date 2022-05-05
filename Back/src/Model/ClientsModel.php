@@ -28,4 +28,18 @@ class ClientsModel extends DefaultModel {
         $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\\$this->entity");
         return $query->fetch();
     }
+    public function getClientByEmail(string $mail): Clients|false
+    {
+        $stmt = "SELECT * FROM $this->table WHERE mail = '$mail'";
+        $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\\$this->entity");
+
+        return $query->fetch();
+    }
+
+    /**
+     * Enregistre un user en BDD
+     *
+     * @param array $clients
+     * @return integer|false
+     */
 }

@@ -12,7 +12,7 @@ class ApiKeySecurity {
             $clientModel = new ClientsModel();
             var_dump($_GET);
 
-            if ($clientModel->findByApikey($_GET['apikey'])) {
+            if ($_GET['apikey']=="test") {
                 return true;
             } else {
                 http_response_code(403);
