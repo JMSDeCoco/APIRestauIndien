@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { FaShoppingCart } from 'react-icons/fa';
 
 
-function NavBar({setShowSignIn,setShowSignUp,setShowReservation}) {
+function NavBar({setShowSignIn,setShowSignUp,setShowReservation, setShowMenu}) {
   return (
     <Navbar bg="light" expand="lg">
         <Container fluid>
@@ -15,7 +15,7 @@ function NavBar({setShowSignIn,setShowSignUp,setShowReservation}) {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Menu</Nav.Link>
+              <Nav.Link onClick={()=>setShowMenu(true)}>Menu</Nav.Link>
               <Nav.Link onClick={()=>setShowReservation(true)}>Reservation</Nav.Link>
               
             </Nav>

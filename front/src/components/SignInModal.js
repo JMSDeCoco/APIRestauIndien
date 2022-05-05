@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Form, Button,Modal} from "react-bootstrap";
-import login from "../Api/Services"
+import {login} from "../Api/Services"
 
 
 function SignInModal({ showSignIn, setShowSignIn }) {

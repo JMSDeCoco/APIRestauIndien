@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
+import MenuModal from "../components/MenuModal";
 import NavBar from "../components/NavBar";
 import ReservationModal from "../components/ReservationModal";
 import SignInModal from "../components/SignInModal";
@@ -9,13 +10,14 @@ const HomePage = () => {
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [showReservation, setShowReservation] = useState(false);
-
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <div>
       <NavBar
         setShowSignIn={setShowSignIn}
         setShowSignUp={setShowSignUp}
         setShowReservation={setShowReservation}
+        setShowMenu={setShowMenu}
       />
       <h1>Bienvenue chez Hindi Food</h1>
       <p>Vous avez faim ? Ca tombe bien !</p>
@@ -44,6 +46,7 @@ const HomePage = () => {
         showReservation={showReservation}
         setShowReservation={setShowReservation}
       />
+      <MenuModal showMenu={showMenu} setShowMenu={setShowMenu}/>
     </div>
   );
 };

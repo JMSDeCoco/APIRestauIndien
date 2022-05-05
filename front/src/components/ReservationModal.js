@@ -88,7 +88,7 @@ function ReservationModal({ showReservation, setShowReservation }) {
             </Form.Group>
             <Form.Group as={Col}>
               <Form.Select name="nbr" size="sm" onChange={handleChange}>
-                <option>Select Day </option>
+                <option>Nombre de personne</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
