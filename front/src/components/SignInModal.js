@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
-import {Form, Button,Modal} from "react-bootstrap"
+import {Form, Button,Modal} from "react-bootstrap";
+import login from "../Api/Services"
+
 
 function SignInModal({ showSignIn, setShowSignIn }) {
   const[values, setValues] = useState({
@@ -10,6 +12,18 @@ const handleChange = (event) => {
   const {name, value} = event.target;
   setValues({...values,[name]: value});
 };
+const handleSubmit = (event) => {
+  event.preventDefault();
+  login(values.email, values.password)
+    .then(response => {
+      //this.setState({error: ""});
+      //this.props.updateUser(response);
+      console.log(response)
+      //this.props.history.push('/dashboard');
+    })
+    .catch(error => console.log( error.response.data.message))
+  ;
+}
   return (
     <Modal
         show={showSignIn}
@@ -23,7 +37,7 @@ const handleChange = (event) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form className="modal-content form-elegant" onSubmit={""}>
+          <Form className="modal-content form-elegant" onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control name="email" type="email" placeholder="Enter email" onChange={handleChange} />
