@@ -30,6 +30,7 @@ class ClientsController extends DefaultController {
 
             $client['pwd'] = password_hash($client['pwd'], PASSWORD_DEFAULT);
             // $client['roles'] = json_encode([]);
+
             $lastId = $this->model->saveClient($client);
 
             $this->jsonResponse($this->model->find($lastId));
@@ -54,5 +55,15 @@ class ClientsController extends DefaultController {
         }
     }
 
-
+    public function save (array $client): void
+    {
+        // Génère l'apikey
+        $apikey = md5(uniqid());
+        $client['apikey'] = $apikey;
+        // Stocke le client
+        $lastId = $this->model->saveClient($client);
+        // Retourne l'apikey
+        $this->jsonResponse($this->model->find($lastId));
+    }
+   
 }
