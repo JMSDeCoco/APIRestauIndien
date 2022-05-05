@@ -8,13 +8,13 @@ public static function router ()
     if (isset($_SERVER["PATH_INFO"])) {
         $path = explode("/",$_SERVER["PATH_INFO"]);
     
-        if (isset($path[1])) {
-            $controllerName = "App\Controller\\". ucfirst($path[1]) . "Controller";
+        if (isset($path[3])) {
+            $controllerName = "App\Controller\\". ucfirst($path[3]) . "Controller";
             $controller = new $controllerName();
     
             $id = null;
-            if (isset($path[2]) && is_numeric($path[2])) {
-                $id = $path[2];
+            if (isset($path[4]) && is_numeric($path[4])) {
+                $id = $path[4];
             }
             switch ($_SERVER['REQUEST_METHOD']){
                 case 'GET': 
