@@ -43,8 +43,9 @@ const getPlat = async () => {
         }
       }
     );
-    const val = (response.data.split('plats').slice(1));
-    return JSON.parse(val);
+    const val = (response.data);
+    // return JSON.parse(val);
+    return val;
   } catch (error) {
     console.log(error);
   }

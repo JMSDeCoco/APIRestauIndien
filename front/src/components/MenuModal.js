@@ -8,7 +8,6 @@ function MenuModal({showMenu, setShowMenu}) {
 
   /*
   const [lastAnnonces, setLastAnnonces] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,7 +17,6 @@ function MenuModal({showMenu, setShowMenu}) {
         console.error(error.message);
       }
     };
-
     fetchData();
   }, []);*/
   useEffect(()=>{
@@ -31,23 +29,38 @@ function MenuModal({showMenu, setShowMenu}) {
           }
         }
         fetchData();
-  },[]);
-
+  }, []);
   let plat = [];
   let entree = [];
   let dessert = [];
   let boisson = [];
+  console.log(p);
 
-  p.forEach(element => {
-    if(element.type == "Plat")
+  for (const element of p ) {
+    let type = element.type;
+    if(type == "Plat")
       plat.push(element); 
-    if(element.type == "Entree")
+    if(type == "Entree")
       entree.push(element); 
-    if(element.type == "Dessert")
+    if(type == "Dessert")
       dessert.push(element);
-    if(element.type == "Boisson")
+    if(type == "Boisson")
       boisson.push(element);
-  });
+  }
+
+  console.log(plat);
+  // p.forEach(element => {
+  //   if(element.type == "Plat")
+  //     plat.push(element); 
+  //   if(element.type == "Entree")
+  //     entree.push(element); 
+  //   if(element.type == "Dessert")
+  //     dessert.push(element);
+  //   if(element.type == "Boisson")
+  //     boisson.push(element);
+  // });
+
+
 
   return (
     <Modal
@@ -60,7 +73,7 @@ function MenuModal({showMenu, setShowMenu}) {
         <Modal.Title id="Menu">Menu</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h3>Entree</h3>
+      <h3>Entree</h3>
         {entree.map((el, index)=>{
           return (
             <React.Fragment key={index}>
