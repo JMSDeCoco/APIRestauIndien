@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { FaShoppingCart } from 'react-icons/fa';
-
+import { Link } from 'react-router-dom';
 
 function NavBar({setShowSignIn,setShowSignUp,setShowReservation, setShowMenu}) {
 
@@ -24,7 +24,7 @@ function NavBar({setShowSignIn,setShowSignUp,setShowReservation, setShowMenu}) {
             >
               <Nav.Link onClick={()=>setShowMenu(true)}>Menu</Nav.Link>
               <Nav.Link onClick={()=>setShowReservation(true)}>Reservation</Nav.Link>
-              
+              <Nav.Link href="/Panier">Panier</Nav.Link>
             </Nav>
             <div className="d-flex">
             {!token ? (<div> <Button variant="outline-success" onClick={() => setShowSignIn(true)}>Sign In</Button>
