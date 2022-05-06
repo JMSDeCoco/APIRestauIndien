@@ -27,7 +27,7 @@ function NavBar({setShowSignIn,setShowSignUp,setShowReservation, setShowMenu}) {
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >
-                <Nav.Link href="#action1"><FaShoppingCart/>Panier</Nav.Link>
+                <Nav.Link href="#action1"><FaShoppingCart/></Nav.Link>
               </Nav>
             </div>
           </Navbar.Collapse>
