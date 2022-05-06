@@ -62,13 +62,13 @@ const HomePage = () => {
                 <Col>
                 <div><h2>Heures d'ouverture</h2></div>
                   <div>
-                    <p> Monday 12h - 14h30 / 19h - 23h30 <br></br>
-                        Tuesday 12h - 14h30 / 19h - 23h30 <br></br>
-                        Wednesday 12h - 14h30 / 19h - 23h30 <br></br>
-                        Thursday 12h - 14h30 / 19h - 23h30  <br></br>
-                        Friday 12h - 14h30 / 19h - 23h30  <br></br>
-                        Saturday 12h - 14h30 / 19h - 23h30  <br></br>
-                        Sunday 12h - 14h30 / 19h - 23h30  <br></br>
+                    <p> Lundi 12h - 14h30 / 19h - 23h30 <br></br>
+                        Mardi 12h - 14h30 / 19h - 23h30 <br></br>
+                        Mercredi 12h - 14h30 / 19h - 23h30 <br></br>
+                        Jeudi 12h - 14h30 / 19h - 23h30  <br></br>
+                        Vendredi 12h - 14h30 / 19h - 23h30  <br></br>
+                        Samedi 12h - 14h30 / 19h - 23h30  <br></br>
+                        Dimanche 12h - 14h30 / 19h - 23h30  <br></br>
                     </p>
                   </div>  
                     
