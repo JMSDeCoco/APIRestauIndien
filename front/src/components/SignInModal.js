@@ -20,6 +20,7 @@ const handleSubmit = (event) => {
       //this.props.updateUser(response);
       console.log(response)
       //this.props.history.push('/dashboard');
+      setShowSignIn(false);
     })
     .catch(error => console.log( error.response.data.message))
   ;
@@ -50,7 +51,7 @@ const handleSubmit = (event) => {
               <Form.Label>Password</Form.Label>
               <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange} />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" >
               Sign In
             </Button>
           </Form>
