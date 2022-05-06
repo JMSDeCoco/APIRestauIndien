@@ -36,7 +36,7 @@ class DefaultModel extends Database {
     public function find(int $id): object|false
     {
         try {
-        $stmt = "SELECT * FROM $this->table WHERE id = $id";
+        $stmt = "SELECT * FROM $this->table WHERE id_client = $id";
         $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\\$this->entity");
         return $query->fetch();
         } catch (\PDOException $e) {

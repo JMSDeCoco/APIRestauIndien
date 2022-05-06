@@ -7,46 +7,45 @@ const errorHandler = err => {
   throw err;
 };
 
-const login = (mail, pwd) => {
+const login = async (mail, pwd) => {
   var data = qs.stringify({
     mail,
     pwd
   })
-  return axios(
-    {
-      methode: 'post',
-      url: `http://localhost:8080/api/v1//clients/login?apikey=test`,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data
-    }
+  try {
+    const response = await axios(
+      {
+        methode: 'post',
+        url: `http://localhost:8000/api/v1//clients/login?apikey=test`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data
+      }
 
-  ).then(function (response) {
+    );
     return JSON.stringify(response.data);
-  })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-
-const getPlat = () => {
-  return axios(
-    {
-  
-  method: 'get',
-  url: 'http://localhost:8080/api/v1/plats?apikey=test',
-  headers: { 
-    'Content-Type': 'application/json'
+  } catch (error) {
+    console.log(error);
   }
 }
-).then(function (response) {
-  console.log(response.data)
-  return(response.data) ;
-})
-  .catch(function (error) {
+
+const getPlat = async () => {
+  try {
+    const response = await axios(
+      {
+        method: 'get',
+        url: 'http://localhost:8000/api/v1/plats?apikey=test',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    const val = (response.data.split('plats').slice(1));
+    return JSON.parse(val);
+  } catch (error) {
     console.log(error);
-  })
+  }
 }
 // login(mail, pwd) {
 

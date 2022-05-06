@@ -4,7 +4,7 @@ import { Form, Button, Modal, Row, Col } from "react-bootstrap";
 import {getPlat} from "../Api/Services";
 
 function MenuModal({showMenu, setShowMenu}) {
-  const [p, setP] = useState({});
+  const [p, setP] = useState([]);
 
   /*
   const [lastAnnonces, setLastAnnonces] = useState([]);
@@ -24,7 +24,6 @@ function MenuModal({showMenu, setShowMenu}) {
   useEffect(()=>{
     const fetchData = async () => {
         try {
-            console.log(await getPlat());
             const responseUser = await getPlat()
             setP(responseUser)
         } catch (error) {
@@ -33,7 +32,6 @@ function MenuModal({showMenu, setShowMenu}) {
         }
         fetchData();
   },[]);
-
 
 
   return (
@@ -47,9 +45,9 @@ function MenuModal({showMenu, setShowMenu}) {
         <Modal.Title id="Menu">Menu</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {p.plats.map((el)=>(
-            <li>(el.nom)</li>
-        ))}
+      {p.map((el) => (
+        <li>{el.nom }</li>
+      ))}
       </Modal.Body>
     </Modal>
   );

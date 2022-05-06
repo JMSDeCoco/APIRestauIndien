@@ -16,6 +16,7 @@ header("Access-Control-Allow-Headers: content-type, token, Authorization");
 header("Access-Control-Allow-Methods: GET, POST, PATCH, OPTIONS");
 // Indique le temps d'existence max de ces données. Cette information va être utilisée pour le cache
 header('Access-Control-Max-Age:1728000');
+//header('Access-Control-Allow-Credentials:true');
 
 // Chargement du routeur
 if (ApiKeySecurity::verifyApiKey()) {

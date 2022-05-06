@@ -46,7 +46,7 @@ const HomePage = () => {
         showReservation={showReservation}
         setShowReservation={setShowReservation}
       />
-      <MenuModal showMenu={showMenu} setShowMenu={setShowMenu}/>
+      <MenuModal showMenu={showMenu} setShowMenu={setShowMenu} />
     </div>
   );
 };
