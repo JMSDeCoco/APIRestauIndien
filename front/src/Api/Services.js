@@ -15,8 +15,8 @@ const login = async (mail, pwd) => {
   try {
     const response = await axios(
       {
-        methode: 'post',
-        url: `http://localhost:8000/api/v1//clients/login?apikey=test`,
+        method: 'post',
+        url: `http://localhost:8080/api/v1//clients/login?apikey=test`,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
@@ -35,7 +35,7 @@ const getPlat = async () => {
     const response = await axios(
       {
         method: 'get',
-        url: 'http://localhost:8000/api/v1/plats?apikey=test',
+        url: 'http://localhost:8080/api/v1/plats?apikey=test',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -43,6 +43,30 @@ const getPlat = async () => {
     );
     const val = (response.data.split('plats').slice(1));
     return JSON.parse(val);
+  } catch (error) {
+    console.log(error);
+  }
+}
+const signup = async (nom , mail, tel ,pwd) => {
+  var data = qs.stringify({
+    nom,
+    mail,
+    tel,
+    pwd
+  })
+  try {
+    const response = await axios(
+      {
+        method: 'post',
+        url: `http://localhost:8080/api/v1//clients/signup?apikey=test`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data
+      }
+
+    );
+    return JSON.stringify(response.data);
   } catch (error) {
     console.log(error);
   }
@@ -143,4 +167,4 @@ const getPlat = async () => {
 //   .catch(errorHandler);
 // }
 
-export  {login, getPlat};
+export  {login, getPlat, signup};
