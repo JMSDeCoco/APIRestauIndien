@@ -44,6 +44,7 @@ class ClientsController extends DefaultController {
 
         if ($client) {
             if (password_verify($clientData['pwd'], $client->getPwd())) {
+                
 
                 $this->jsonResponse((new JwTokenSecurity)->generateToken($client->jsonSerialize()));
 
