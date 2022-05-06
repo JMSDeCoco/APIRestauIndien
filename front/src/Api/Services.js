@@ -16,7 +16,7 @@ const login = async (mail, pwd) => {
     const response = await axios(
       {
         method: 'post',
-        url: `http://localhost:8080/api/v1/clients/login?apikey=test`,
+        url: `http://localhost:8000/api/v1/clients/login?apikey=test`,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
@@ -37,7 +37,7 @@ const getPlat = async () => {
     const response = await axios(
       {
         method: 'get',
-        url: 'http://localhost:8080/api/v1/plats?apikey=test',
+        url: 'http://localhost:8000/api/v1/plats?apikey=test',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -61,7 +61,7 @@ const signup = async (nom , mail, tel ,pwd) => {
     const response = await axios(
       {
         method: 'post',
-        url: `http://localhost:8080/api/v1/clients/signup?apikey=test`,
+        url: `http://localhost:8000/api/v1/clients/signup?apikey=test`,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
