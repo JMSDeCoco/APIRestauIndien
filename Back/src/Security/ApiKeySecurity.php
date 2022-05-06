@@ -5,7 +5,12 @@ use App\Model\ClientsModel;
 use Core\Traits\JsonTrait;
 
 class ApiKeySecurity {
-
+    
+    /**
+     * verifyApiKey permet de vérifier si la clé api est valide
+     *
+     * @return bool
+     */
     public static function verifyApiKey (): bool
     {
         if(isset($_GET['apikey']) && !empty($_GET['apikey'])){

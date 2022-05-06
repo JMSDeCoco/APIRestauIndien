@@ -10,7 +10,13 @@ class CommandesModel extends DefaultModel {
 
     protected string $table = "commandes";
     protected string $entity = "Commandes";
-
+    
+    /**
+     * addCommande permet d'ajouter une commande
+     *
+     * @param  mixed $commande
+     * @return int
+     */
     public function addCommande($commande): int|false
     {
         $stmt = "INSERT INTO $this->table(id_client,status) VALUES (:id_client, :status)";
@@ -20,7 +26,14 @@ class CommandesModel extends DefaultModel {
         }
         return false;
     }
-
+    
+    /**
+     * updateCommande permet de changer lescommandes
+     *
+     * @param  mixed $id_commande
+     * @param  mixed $commande
+     * @return bool
+     */
     public function updateCommande(int $id_commande, array $commande): bool
     {
         $stmt = "

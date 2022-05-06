@@ -4,10 +4,18 @@ namespace App\Controller;
 use App\Model\CommandesModel;
 use Core\Controller\DefaultController;
 
+/**
+ * CommandesController
+ */
 class CommandesController extends DefaultController {
 
     private $model;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct ()
     {
         $this->model = new CommandesModel();
@@ -31,13 +39,26 @@ class CommandesController extends DefaultController {
         $lastId = $this->model->addCommande($commande);
         $this->jsonResponse($this->model->find($lastId), 201);
     }
-
+    
+    /**
+     * updatecommmade
+     *
+     * @param  mixed $id
+     * @param  mixed $commande
+     * @return void
+     */
     public function updatecommmade(int $id, array $commande): void
     {
         if ($this->model->updateCommande($id, $commande)) {
             $this->jsonResponse($this->model->find($id), 201);
         }
-    }
+    }    
+    /**
+     * delete
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function delete (int $id): void
     {
         if ($this->model->delete($id)) {

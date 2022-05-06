@@ -1,10 +1,18 @@
 <?php
 namespace Core\Database;
 
+/**
+ * Database
+ */
 class Database {
 
     protected ?\PDO $pdo;
-
+    
+    /**
+     * __construct de la base de données
+     *
+     * @return void
+     */
     public function __construct(
         private string $host = "localhost:3306",
         private string $dbname = "restau_indien",

@@ -10,7 +10,13 @@ class ReservationModel extends DefaultModel {
 
     protected string $table = "reservation";
     protected string $entity = "Reservation";
-
+    
+    /**
+     * checkReservation permet de regarder si la réservation est possible
+     *
+     * @param  mixed $reservation
+     * @return int
+     */
     public function checkReservation($reservation): int|false
     {
         $placeprise = "SELECT SUM(nb_clients) FROM $this->table WHERE heure = " . $reservation["heure"]." AND date = ".$reservation["date"];
