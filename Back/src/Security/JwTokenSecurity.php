@@ -29,7 +29,12 @@ class JwTokenSecurity {
 
         return JWT::encode($payload, self::SIGNATURE, self::ALGO);
     }
-
+    
+    /** 
+     * decodeToken permet de décoder les token
+     *
+     * @return array
+     */
     public function decodeToken (): array
     {
         $headers = getallheaders();

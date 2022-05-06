@@ -4,6 +4,9 @@ namespace Core\Model;
 use Core\Database\Database;
 use Core\Traits\JsonTrait;
 
+/**
+ * DefaultModel 
+ */
 class DefaultModel extends Database {
 
     use JsonTrait;
@@ -32,7 +35,13 @@ class DefaultModel extends Database {
             $this->jsonResponse($e->getMessage(), 400);
         }
     }
-
+    
+    /**
+     * find un client grace a son id
+     *
+     * @param  mixed $id
+     * @return object
+     */
     public function find(int $id): object|false
     {
         try {
@@ -43,7 +52,13 @@ class DefaultModel extends Database {
             $this->jsonResponse($e->getMessage(), 400);
         }
     }
-
+    
+    /**
+     * delete un élément en l'identifiant avec son id
+     *
+     * @param  mixed $id
+     * @return bool
+     */
     public function delete(int $id): bool
     {
         $stmt = "DELETE FROM $this->table WHERE id = :id";

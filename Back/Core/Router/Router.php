@@ -1,6 +1,10 @@
 <?php
 namespace Core\Router;
+use TypeError;
 
+/**
+ * Router
+ */
 class Router {
 
 public static function router ()
@@ -67,8 +71,9 @@ public static function router ()
             };
         }
     
-    } else {
-        // TODO: Error message
+    } 
+    else {
+        throw new TypeError("Erreur avec les routes");  
     }
 }
 }

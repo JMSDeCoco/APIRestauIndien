@@ -5,13 +5,26 @@ use App\Model\ClientsModel;
 use Core\Controller\DefaultController;
 use App\Security\JwTokenSecurity;
 
+/**
+ * ClientsController
+ */
 class ClientsController extends DefaultController {
 
-
+    
+    /**
+     * index
+     *
+     * @return void
+     */
     public function index(): void
     {
         $this->jsonResponse((new ClientsModel())->findAll());
-    }
+    }    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->model = new ClientsModel;
@@ -36,7 +49,13 @@ class ClientsController extends DefaultController {
             $this->jsonResponse($this->model->find($lastId));
         }
     }
-
+    
+    /**
+     * login
+     *
+     * @param  mixed $clientData
+     * @return void
+     */
     public function login (array $clientData): void
     {
         // TODO: Vérifier que $clientData contient un email et un password sinon on retourne une erreur
@@ -55,7 +74,13 @@ class ClientsController extends DefaultController {
             $this->jsonResponse("Cet utilisateur n'est pas inscrit, veuillez vous inscrire", 400);
         }
     }
-
+    
+    /**
+     * save
+     *
+     * @param  mixed $client
+     * @return void
+     */
     public function save (array $client): void
     {
         // Génère l'apikey

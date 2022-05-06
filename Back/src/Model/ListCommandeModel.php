@@ -10,7 +10,13 @@ class ListCommandeModel extends DefaultModel {
 
     protected string $table = "liste_commande";
     protected string $entity = "Liste_Commande";
-
+    
+    /**
+     * addPlats perrmet d'ajouter des plats dans le panier de commande
+     *
+     * @param  mixed $plat
+     * @return bool
+     */
     public function addPlats($plat): bool
     {
         $stmt = "INSERT INTO $this->table(id_commande, id_plats) VALUES (:id_commande, :id_plats)";

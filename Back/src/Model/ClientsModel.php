@@ -21,13 +21,26 @@ class ClientsModel extends DefaultModel {
         }
         return false;
     }
+        
+    /**
+     * findByApikey permet de trouver un client avec son apikey
+     *
+     * @param  mixed $apikey
+     * @return Clients
+     */
     public function findByApikey ($apikey): Clients|false
     {
         $stmt = "SELECT * FROM $this->table WHERE apikey = '$apikey'";
 
         $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\\$this->entity");
         return $query->fetch();
-    }
+    }     
+    /**
+     * getClientByEmail permet d'obtenir un client avec son email
+     *
+     * @param  mixed $mail
+     * @return Clients
+     */
     public function getClientByEmail(string $mail): Clients|false
     {
         $stmt = "SELECT * FROM $this->table WHERE mail = '$mail'";

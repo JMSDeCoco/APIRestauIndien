@@ -3,6 +3,9 @@ namespace App\Entity;
 
 use JsonSerializable;
 
+/**
+ * Clients
+ */
 class Clients implements JsonSerializable {
 
     private int $id_client;
@@ -149,7 +152,13 @@ class Clients implements JsonSerializable {
     }
 
 
-
+    
+    /**
+     * getClientByEmail permet de récupéré un client avec son email
+     *
+     * @param  mixed $email
+     * @return Clients
+     */
     public function getClientByEmail(string $email): Clients|false
     {
         $stmt = "SELECT * FROM $this->table WHERE email = '$email'";

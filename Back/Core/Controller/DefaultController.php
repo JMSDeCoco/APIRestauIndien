@@ -4,6 +4,9 @@ namespace Core\Controller;
 use App\Security\JwTokenSecurity;
 use Core\Traits\JsonTrait;
 
+/**
+ * DefaultController
+ */
 class DefaultController {
     // On charge le JsonTrait de façon générique pour l'avoir sur tous nos controller.
     use JsonTrait;
