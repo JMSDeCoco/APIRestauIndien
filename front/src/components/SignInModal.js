@@ -12,17 +12,14 @@ const handleChange = (event) => {
   const {name, value} = event.target;
   setValues({...values,[name]: value});
 };
-const handleSubmit = (event) => {
+const handleSubmit = async(event) => {
   event.preventDefault();
-  login(values.email, values.password)
-    .then(response => {
-      //this.setState({error: ""});
-      //this.props.updateUser(response);
-      console.log(response)
-      setShowSignIn(false);
-    })
-    .catch(error => console.log( error.response.data.message))
-  ;
+  const status = await login(values.email, values.password)
+  console.log(status)
+  if (status === 200) {
+    setShowSignIn(false);
+        window.location.reload();
+  }
 }
   return (
     <Modal
