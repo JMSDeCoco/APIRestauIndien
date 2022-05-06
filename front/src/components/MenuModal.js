@@ -33,6 +33,21 @@ function MenuModal({showMenu, setShowMenu}) {
         fetchData();
   },[]);
 
+  let plat = [];
+  let entree = [];
+  let dessert = [];
+  let boisson = [];
+
+  p.forEach(element => {
+    if(element.type == "Plat")
+      plat.push(element); 
+    if(element.type == "Entree")
+      entree.push(element); 
+    if(element.type == "Dessert")
+      dessert.push(element);
+    if(element.type == "Boisson")
+      boisson.push(element);
+  });
 
   return (
     <Modal
@@ -45,7 +60,38 @@ function MenuModal({showMenu, setShowMenu}) {
         <Modal.Title id="Menu">Menu</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-   
+        <h3>Entree</h3>
+        {entree.map((el, index)=>{
+          return (
+            <React.Fragment key={index}>
+            <p>{el.nom} {el.prix}€</p>
+            </React.Fragment>
+          )
+        })}
+        <h3>Plat</h3>
+        {plat.map((el, index)=>{
+          return (
+            <React.Fragment key={index}>
+            <p>{el.nom} {el.prix}€</p>
+            </React.Fragment>
+          )
+        })}
+        <h3>Dessert</h3>
+        {dessert.map((el, index)=>{
+          return (
+            <React.Fragment key={index}>
+            <p>{el.nom} {el.prix}€</p>
+            </React.Fragment>
+          )
+        })}
+        <h3>Boisson</h3>
+        {boisson.map((el, index)=>{
+          return (
+            <React.Fragment key={index}>
+            <p>{el.nom} {el.prix}€</p>
+            </React.Fragment>
+          )
+        })}
       </Modal.Body>
     </Modal>
   );

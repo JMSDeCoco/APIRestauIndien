@@ -14,12 +14,16 @@ const handleChange = (event) => {
 };
 const handleSubmit = async (event) => {
   event.preventDefault();
-  const status = await login(values.email, values.password)
-  console.log(status)
-  if (status === 200) {
-    setShowSignIn(false);
-        window.location.reload();
-  }
+  login(values.email, values.password)
+    .then(response => {
+      //this.setState({error: ""});
+      //this.props.updateUser(response);
+      console.log(response)
+      //this.props.history.push('/dashboard');
+      setShowSignIn(false);
+    })
+    .catch(error => console.log( error.response.data.message))
+  ;
 }
   return (
     <Modal
@@ -47,7 +51,7 @@ const handleSubmit = async (event) => {
               <Form.Label>Password</Form.Label>
               <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange} />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" >
               Sign In
             </Button>
           </Form>

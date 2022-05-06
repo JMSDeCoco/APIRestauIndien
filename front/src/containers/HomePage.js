@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import ReservationModal from "../components/ReservationModal";
 import SignInModal from "../components/SignInModal";
 import SignUpModal from "../components/SignUpModal";
+import MenuModal from "../components/MenuModal";
 import "./HomeCss.css";
 import MenuModal from "../components/MenuModal";
 
@@ -19,6 +20,7 @@ const HomePage = () => {
           setShowSignIn={setShowSignIn}
           setShowSignUp={setShowSignUp}
           setShowReservation={setShowReservation}
+          setShowMenu={setShowMenu}
         />
       </Container>
       
