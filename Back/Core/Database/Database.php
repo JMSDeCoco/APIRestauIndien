@@ -6,7 +6,7 @@ class Database {
     protected ?\PDO $pdo;
 
     public function __construct(
-        private string $host = "localhost:8889",
+        private string $host = "localhost:3306",
         private string $dbname = "restau_indien",
         private string $user = "root",
         private string $pass = "root"

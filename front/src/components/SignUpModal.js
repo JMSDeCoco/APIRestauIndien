@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
+import { signup } from "../Api/Services";
 
 function SignUpModal({ showSignUp, setShowSignUp }) {
   const[values, setValues] = useState({
@@ -12,6 +13,18 @@ function SignUpModal({ showSignUp, setShowSignUp }) {
     const {name, value} = event.target;
     setValues({...values,[name]: value});
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    signup(values.name, values.email, values.number, values.password)
+      .then(response => {
+        //this.setState({error: ""});
+        //this.props.updateUser(response);
+        console.log(response)
+        //this.props.history.push('/dashboard');
+      })
+      .catch(error => console.log( error.response.data.message))
+    ;
+  }
   return (
     <Modal
       show={showSignUp}
@@ -23,7 +36,7 @@ function SignUpModal({ showSignUp, setShowSignUp }) {
         <Modal.Title id="SignUp">Sign Up</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form className="modal-content form-elegant" >
+        <Form className="modal-content form-elegant" onSubmit={handleSubmit}  >
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Name</Form.Label>
             <Form.Control name="name" type="text" placeholder="Enter your name" onChange={handleChange} />

@@ -47,6 +47,30 @@ const getPlat = async () => {
     console.log(error);
   }
 }
+const signup = async (nom , mail, tel ,pwd) => {
+  var data = qs.stringify({
+    nom,
+    mail,
+    tel,
+    pwd
+  })
+  try {
+    const response = await axios(
+      {
+        method: 'post',
+        url: `http://localhost:8000/api/v1//clients/signup?apikey=test`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data
+      }
+
+    );
+    return JSON.stringify(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+}
 // login(mail, pwd) {
 
 //   return this.srv.post('/clients/login?apikey=test', {mail, pwd}, )
@@ -143,4 +167,4 @@ const getPlat = async () => {
 //   .catch(errorHandler);
 // }
 
-export  {login, getPlat};
+export  {login, getPlat, signup};
