@@ -19,7 +19,7 @@ const handleSubmit = (event) => {
       //this.setState({error: ""});
       //this.props.updateUser(response);
       console.log(response)
-      //this.props.history.push('/dashboard');
+      setShowSignIn(false);
     })
     .catch(error => console.log( error.response.data.message))
   ;

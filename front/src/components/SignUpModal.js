@@ -20,7 +20,7 @@ function SignUpModal({ showSignUp, setShowSignUp }) {
         //this.setState({error: ""});
         //this.props.updateUser(response);
         console.log(response)
-        //this.props.history.push('/dashboard');
+        setShowSignUp(false);
       })
       .catch(error => console.log( error.response.data.message))
     ;
