@@ -15,7 +15,7 @@ const login = async (mail, pwd) => {
   try {
     const response = await axios(
       {
-        methode: 'post',
+        method: 'post',
         url: `http://localhost:8000/api/v1//clients/login?apikey=test`,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
