@@ -5,7 +5,7 @@ class Router {
 
 public static function router ()
 {
-    echo explode("/",$_SERVER["PATH_INFO"])[3];
+    // echo explode("/",$_SERVER["PATH_INFO"])[3];
     if (isset($_SERVER["PATH_INFO"])) {
         $path = explode("/",$_SERVER["PATH_INFO"]);
     

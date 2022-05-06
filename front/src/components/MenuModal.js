@@ -45,9 +45,7 @@ function MenuModal({showMenu, setShowMenu}) {
         <Modal.Title id="Menu">Menu</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {p.map((el) => (
-        <li>{el.nom }</li>
-      ))}
+   
       </Modal.Body>
     </Modal>
   );

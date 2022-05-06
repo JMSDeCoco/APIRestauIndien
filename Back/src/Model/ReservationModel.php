@@ -2,7 +2,7 @@
 namespace App\Model;
 
 use Core\Model\DefaultModel;
-
+use App\Entity\Reservation;
 /**
  * @method Reservation[] findAll()
  */
@@ -11,13 +11,20 @@ class ReservationModel extends DefaultModel {
     protected string $table = "reservation";
     protected string $entity = "Reservation";
 
-    public function addReservation($reservation): int|false
+    public function checkReservation($reservation): int|false
     {
-        $stmt = "INSERT INTO $this->table(heure, date, type, qty) VALUES (:heure, :date, :type, :qty)";
+        $placeprise = "SELECT SUM(nb_clients) FROM $this->table WHERE heure = " . $reservation["heure"]." AND date = ".$reservation["date"];
+        $some = (int)$placeprise + (int)$reservation["nb_clients"];
+        $stmt = "INSERT INTO $this->table (heure , date, id_client , nb_clients) VALUES (:heure, :date, :id_client, :nb_clients)";
         $prepare = $this->pdo->prepare($stmt);
-        if($prepare->execute($reservation)){
-            return $this->pdo->lastInsertId($this->table);
+        if ($some <30){
+            if($prepare->execute($reservation)){
+                return $this->pdo->lastInsertId($this->table);
+            }else{
+                return false;
+            }
         }
+        
         return false;
     }
 }

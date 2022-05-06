@@ -5,6 +5,11 @@ use App\Model\ReservationModel;
 use Core\Controller\DefaultController;
 
 class ReservationController extends DefaultController {
+    public function __construct()
+    {
+        $this->model = new ReservationModel();
+    }
+
 
     public function index (): void
     {
@@ -13,7 +18,7 @@ class ReservationController extends DefaultController {
 
     public function addReservation($reservation): void
     {
-        $lastId = $this->model->addCommande($reservation);
+        $lastId = $this->model->checkReservation($reservation);
         $this->jsonResponse($this->model->find($lastId), 201);
     }
     

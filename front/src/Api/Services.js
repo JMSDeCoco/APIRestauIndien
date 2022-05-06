@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import jwt_decode from "jwt-decode";
 import qs from "qs";
 
 
@@ -24,7 +24,9 @@ const login = async (mail, pwd) => {
       }
 
     );
-    return JSON.stringify(response.data);
+    localStorage.setItem("token", JSON.stringify(response.data));
+    localStorage.setItem("client", JSON.stringify(jwt_decode(response.data)));
+    return response.status;
   } catch (error) {
     console.log(error);
   }
@@ -70,6 +72,16 @@ const signup = async (nom , mail, tel ,pwd) => {
   } catch (error) {
     console.log(error);
   }
+}
+
+const logout = () => {
+  localStorage.clear();
+  window.location.reload();
+}
+const isLogin = () => {
+  return localStorage.getItem("token") && localStorage.getItem("user")
+  ? true
+  : false;
 }
 // login(mail, pwd) {
 
@@ -167,4 +179,4 @@ const signup = async (nom , mail, tel ,pwd) => {
 //   .catch(errorHandler);
 // }
 
-export  {login, getPlat, signup};
+export  {login, getPlat, signup, logout, isLogin};

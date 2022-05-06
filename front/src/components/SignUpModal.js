@@ -13,6 +13,7 @@ function SignUpModal({ showSignUp, setShowSignUp }) {
     const {name, value} = event.target;
     setValues({...values,[name]: value});
   };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     signup(values.name, values.email, values.number, values.password)
